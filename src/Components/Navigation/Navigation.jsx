@@ -8,6 +8,7 @@ import { ChangeLanguage } from "../ChangeLanguage/ChangeLanguage";
 import * as CS from "./navigation.styled";
 import { HiMenu, HiX } from "react-icons/hi";
 import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher";
+import logo from '../../logo/main_logo.png'
 
 export const Navigation = () => {
   const { isLogin, role } = useAuth();
@@ -69,7 +70,7 @@ export const Navigation = () => {
       </CS.LeftSection>
 
       <CS.LogoLink to="/">
-        <CS.Logo src="../logo/main_logo.png" alt="Main Logo" />
+        <CS.Logo src={logo} alt="Main Logo" />
       </CS.LogoLink>
 
       {!isMobile && (
