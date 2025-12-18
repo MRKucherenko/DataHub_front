@@ -69,7 +69,7 @@ export const Navigation = () => {
       </CS.LeftSection>
 
       <CS.LogoLink to="/">
-        <CS.Logo src="public/main_logo.png" alt="Main Logo" />
+        <CS.Logo src="../logo/main_logo.png" alt="Main Logo" />
       </CS.LogoLink>
 
       {!isMobile && (
