@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FiGlobe } from "react-icons/fi";
-import * as CS from "./ChangeLanguage.styled";
+import * as CS from "./changeLanguage.styled";
 
 export const ChangeLanguage = () => {
   const { i18n } = useTranslation();
