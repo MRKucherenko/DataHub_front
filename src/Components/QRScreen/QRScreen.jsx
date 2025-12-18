@@ -1,5 +1,5 @@
 import QRCode from "react-qr-code";
-import * as CS from "./qrScreen.styled";
+import * as CS from "./qRScreen.styled";
 import { useTranslation } from "react-i18next";
 
 export default function QRScreen({ otpAuthUrl }) {
