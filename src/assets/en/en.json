@@ -1,0 +1,99 @@
+{
+  "navigation": {
+    "Home": "Home",
+    "Work Place": "Work Place",
+    "superAdmin": "Super Admin",
+    "Login": "Login",
+    "Register": "Register"
+  },
+  "logout": "Logout",
+  "addContact": "Add",
+  "changeContact": "Change Contact",
+  "delete": "Delete",
+  "registerButton": "Register",
+  "loginButton": "Login",
+  "addButton": "Add",
+  "clearButton" : "Clear Filter",
+  "notesButton": "Notes",
+  "filter": {
+    "byAlphabet": {
+      "text": "By Alphabet",
+      "a-z": "A-Z",
+      "z-a": "Z-A"
+    },
+    "byAge": {
+      "text": "By Age",
+      "young-old": "Young-Old",
+      "old-young": "Old-Young"
+    },
+    "createdAt": {
+      "text": "Created At",
+      "new-old": "New-Old",
+      "old-new": "Old-New"
+    },
+    "byGender": {
+      "text": "By Gender",
+      "Male": "Male",
+      "Female": "Female"
+    }
+  },
+  "rowsName": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "middleName": "Middle Name",
+    "gender": "Gender",
+    "genderChose": "Chose a gender",
+    "dateOfBirth": "Date Of Birth",
+    "street": "Street",
+    "houseNumber": "House Number",
+    "phone": "Phone",
+    "email": "Email",
+    "actions": "Actions"
+  },
+  "login": {
+    "email": "Email",
+    "password": "Password",
+    "loginButton": "Login",
+    "loginText": "Don’t have an account?"
+  },
+  "register": {
+    "fullName": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "registerButton": "Register",
+    "registerText": "Already have an account?"
+  },
+  "interestingFacts" : {
+    "addPeople": "Add some people to the database to see interesting facts!",
+    "averageAge": "Average age of people in the database — {{age}} years.",
+    "numberOfWomen": "Number of women in the database — ",
+    "numberOfMan": "Number of men in the database — ",
+    "totalNumber": "Total number of people in the database — {{count}}.",
+    "interestingFactsNoLogin": "Register to access interesting demographic facts!"
+  },
+  "otpCode": {
+    "text": "Enter the 6-digit code we sent to your email to verify your identity",
+    "button": "Send"
+  },
+  "role": {
+    "guest": "Guest",
+    "user": "User",
+    "admin": "Admin",
+    "superAdmin": "Super Admin"
+  },
+  "statistics": {
+    "byGender": {
+      "allPeople": "All People",
+      "male": "Male",
+      "female": "Female"
+    },
+    "gender": "Gender structure",
+    "byAge": "Age distribution",
+    "topStreets": "Top streets"
+  },
+  "toast": "People found: ",
+  "qrScreen": {
+    "title": "Set up Two-Factor Authentication",
+    "description": "To secure your account, please follow these steps:\n\n1. Download and install the Google Authenticator app on your mobile device.\n2. Open the app and select 'Scan a QR code'.\n3. Scan the QR code displayed on this screen.\n4. Once scanned, the app will generate a 6-digit code.\n5. Enter the code in the next step and press 'Continue' to complete the setup.\n\nAfter completing these steps, your account will be protected with Two-Factor Authentication."
+  }
+}
