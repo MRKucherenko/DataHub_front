@@ -1,12 +1,58 @@
-# React + Vite
+# 📊 DataHub — Full-Stack Contact Management Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Hey there! 👋
+- Welcome to **DataHub**, my full-stack web application for managing contacts and related information.
+- The project includes a modern **React frontend** and a secure **Node.js/Express backend** with **MongoDB** integration.
+- Features include **two-factor authentication**, **role-based access**, **CRUD for contacts and notes**, **advanced filtering**, **infinite scroll**, **notifications**, **theme switching**, and **multilingual support**.
+- Fully responsive and optimized for **mobile, tablet, and desktop devices**.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 Live Demo
+- **🚀 Try it online:** *[datahub](https://datahubproject.netlify.app/)*
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧠 Technologies Used
+
+### Frontend — `DataHub_front`
+- **⚛️ React + JavaScript (ES6+)** — scalable, component-based UI
+- **🧩 Redux Toolkit & RTK Query** — state management and API integration
+- **💅 styled-components** — modular, maintainable styling
+- **🌍 Internationalization (i18n)** — multi-language support
+- **📱 Responsive Layout** — optimized for all screen sizes
+- **🔄 Infinite Scroll** — smooth browsing of large datasets
+- **🔔 Notifications System** — real-time alerts for key actions
+- **🎨 Theme Switching** — light and dark modes
+
+### Backend — `DataHubBack`
+- **🟢 Node.js & Express.js** — RESTful API server
+- **🗄️ MongoDB** — database storage for contacts, notes, and facts
+- **🔐 Google Authenticator (2FA)** — two-factor authentication
+- **🛂 Role-Based Access Control** — guest role by default; contact me for full access
+- **✏️ CRUD Operations** — contacts, notes, interesting facts
+- **🔍 Advanced Filtering & Search** — by gender, age, creation date, alphabetical order, and notes
+
+---
+
+## 💫 Key Features
+- ✅ **Two-Factor Authentication (2FA)** using Google Authenticator
+- ✅ **Guest Role on Registration** — full access available by contacting **mrmykytakucherenko@gmail.com**
+- ✅ Create, edit, and delete contacts
+- ✅ Add notes to contacts
+- ✅ Filter contacts by **gender, age, date created, alphabetical order, and notes**
+- ✅ **Keyword search** for quick access
+- ✅ **Infinite scroll** for smooth data loading
+- ✅ **Notifications** for important actions
+- ✅ **Theme switching** (light/dark)
+- ✅ **Multilingual support** (i18n)
+- ✅ Optimized for **mobile, tablet, and desktop**
+
+---
+
+## ⚙️ Installation / How to Run
+
+### Clone repositories
+```bash
+git clone https://github.com/MRKucherenko/DataHub_front.git
+git clone https://github.com/MRKucherenko/DataHubBack.git
