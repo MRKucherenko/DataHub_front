@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDeleteContactMutation } from "../../redux/dataBase/dataBase";
 import { useAuth } from "../../hooks/useAuth";
@@ -6,6 +5,7 @@ import * as CS from "./contactById.styled";
 import { ChangeContact } from "../ChangeContact/ChangeContact";
 import { Modal } from "../Modal/Modal";
 import { Notes } from "../Notes/Notes";
+import { useToggleModal } from "../../hooks/useToggleModal";
 
 export const ContactById = ({
   firstName,
@@ -21,13 +21,9 @@ export const ContactById = ({
   notes
 }) => {
   const { t } = useTranslation();
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const [deleteContact] = useDeleteContactMutation();
   const { role } = useAuth();
-
-  const toggleModal = () => {
-    setIsOpenModal(!isOpenModal);
-  };
+  const {toggleModal, isOpenModal} = useToggleModal();
 
   return (
     <CS.ContactContainer>

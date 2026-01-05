@@ -1,15 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme} from "../../redux/theme/themeSlice";
+import { useSelector } from "react-redux";
 import { FaMoon, FaSun } from "react-icons/fa";
-import * as CS from './themeSwitcher.styled';
+import * as CS from "./themeSwitcher.styled";
+import { useToggleThemeSwitcher } from "./hooks/useToggleThemeSwitcher";
 
 export const ThemeSwitcher = () => {
-  const dispatch = useDispatch();
   const mode = useSelector((state) => state.theme.mode);
-
-  const toggleThemeChange = () => {
-    dispatch(toggleTheme());
-  };
+  const { toggleThemeChange } = useToggleThemeSwitcher();
 
   return (
     <CS.Button onClick={toggleThemeChange} aria-label="Toggle theme">

@@ -9,7 +9,6 @@ import { useAuth } from "../../hooks/useAuth";
 import { useGetStatisticsQuery } from "../../redux/dataBase/dataBase";
 
 export const SearchBar = () => {
-  // const search = useSelector(selectKeySearch);
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
   const {data} = useGetStatisticsQuery();
@@ -21,7 +20,6 @@ export const SearchBar = () => {
     }, 500),
     []
   );
-  console.log(data)
 
   useEffect(() => {
     if (role !== "guest") {

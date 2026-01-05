@@ -1,58 +1,13 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { registerBefore } from "../../redux/auth/authOperation";
-import { useNavigate } from "react-router-dom";
-import * as CS from "./register.styled";
 import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
 import { FiEye, FiEyeOff } from "react-icons/fi";
+import * as CS from "./register.styled";
+import { useShowPass } from "./hooks/useShowPass";
+import { useRegister } from "./hooks/useRegister";
 
 export const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [showPass, setShowPass] = useState(false);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { t } = useTranslation();
-
-  const heandleShowPass = () => {
-    setShowPass(!showPass);
-  };
-
-  const heandleSubmit = async (event) => {
-    event.preventDefault();
-    await dispatch(
-      registerBefore({
-        name: fullName,
-        email,
-        password,
-      })
-    );
-    toast.success("Check you`r email");
-    navigate("/OTP");
-  };
-
-  const heandleChange = (event) => {
-    const { name, value } = event.target;
-
-    switch (name) {
-      case "email":
-        setEmail(value);
-        return;
-
-      case "password":
-        setPassword(value);
-        return;
-
-      case "fullName":
-        setFullName(value);
-        return;
-
-      default:
-        return;
-    }
-  };
+  const { showPass, heandleShowPass } = useShowPass();
+  const { heandleChange, heandleSubmit, fullName, email, password } = useRegister();
 
   return (
     <>

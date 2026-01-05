@@ -1,24 +1,14 @@
+import { useTranslation } from "react-i18next";
 import { Statisticts } from "../../Components/Statistics/Statistics";
 import { UpdateUserStatus } from "../../Components/UpdateUserStatus/UpdateUserStatus";
 import { useGetAllUsersQuery } from "../../redux/workWithUsers/workWithUsers";
-import { useGetStatisticsQuery } from "../../redux/dataBase/dataBase";
 import * as CS from "./superAdmin.styled";
-import { useTranslation } from "react-i18next";
+import { useTopStreets } from "./hooks/useTopStreets";
 
 export const SuperAdminPage = () => {
   const { data } = useGetAllUsersQuery();
-  const { data: statistics } = useGetStatisticsQuery();
-  const {t} = useTranslation();
-
-  const topStreet = statistics
-    ? Object.entries(statistics?.data.topStreet)
-        .map(([street, count]) => ({
-          street,
-          count,
-        }))
-        .sort((a, b) => b.count - a.count)
-        .slice(0, 5)
-    : [];
+  const { t } = useTranslation();
+  const { statistics, topStreet } = useTopStreets();
 
   return (
     <CS.PageWrapper>
@@ -46,7 +36,7 @@ export const SuperAdminPage = () => {
           />
         </div>
         <div>
-           <CS.StatTitle>{t("statistics.byAge")}</CS.StatTitle>
+          <CS.StatTitle>{t("statistics.byAge")}</CS.StatTitle>
           <Statisticts
             data={{
               value0_17: statistics?.data.ageGroups["0-17"],
@@ -58,7 +48,7 @@ export const SuperAdminPage = () => {
           />
         </div>
         <div>
-           <CS.StatTitle>{t("statistics.topStreets")}</CS.StatTitle>
+          <CS.StatTitle>{t("statistics.topStreets")}</CS.StatTitle>
           <Statisticts data={topStreet} />
         </div>
       </CS.ChartsWrapper>

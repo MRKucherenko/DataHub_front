@@ -1,16 +1,9 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
 import { FiGlobe } from "react-icons/fi";
 import * as CS from "./changeLanguage.styled";
+import { useLanguageChange } from "./hooks/useLanguageChange";
 
 export const ChangeLanguage = () => {
-  const { i18n } = useTranslation();
-  const [open, setOpen] = useState(false);
-
-  const handleLanguageChange = (lang) => {
-    i18n.changeLanguage(lang);
-    setOpen(!open);
-  };
+  const {open, handleLanguageChange, setOpen} = useLanguageChange();
 
   return (
     <CS.Wrapper>

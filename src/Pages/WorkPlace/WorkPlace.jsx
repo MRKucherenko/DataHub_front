@@ -1,18 +1,17 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef} from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { Modal } from "../../Components/Modal/Modal";
 import { ContactItem } from "../../Components/ContactItem/ContactItem";
-import { SearchBar } from "../../Components/SearchBar/SearchBar";
-import { Filter } from "../../Components/Filter/Filter";
 import * as CS from "./workPlace.styled";
 import colomsName from "../../data/colomsName.json";
 import { useTranslation } from "react-i18next";
 import { useFilter } from "../../hooks/useFilter";
 import { useGetAllContactsQuery } from "../../redux/dataBase/dataBase";
 import { AddContacts } from "../../Components/AddContacts/AddContacts";
+import { useToggleModal } from "../../hooks/useToggleModal";
+import { WorkPlaceControls } from "../../Components/WorkPlaceControls/WorkPlaceControls";
 
 export const WorkPlace = () => {
-  const [isOpenModal, setIsOpenModal] = useState(false);
   const { role } = useAuth();
   const ref = useRef();
   const { t } = useTranslation();
@@ -24,6 +23,7 @@ export const WorkPlace = () => {
     { refetchOnMountOrArgChange: true }
   );
   const [allPages, setAllPages] = useState([]);
+  const {isOpenModal, toggleModal} = useToggleModal();
 
   useEffect(() => {
     if (data?.data?.length) {
@@ -61,29 +61,11 @@ export const WorkPlace = () => {
     setPage(1);
   }, [byAlphabet, byAge, byGender, createdAt, keySearch]);
 
-  const toggleModal = useCallback(() => {
-    setIsOpenModal(!isOpenModal);
-  }, [isOpenModal]);
-
   return (
     <>
       <CS.Wrapper>
-        {role !== "guest" && (
-          <CS.Controls>
-            <CS.LeftControls>
-              <Filter data={data} />
-            </CS.LeftControls>
-            <CS.RightControls>
-              {role === "admin" ||
-                (role === "superAdmin" && (
-                  <CS.AddButton type="button" onClick={toggleModal}>
-                    {t("addButton")}
-                  </CS.AddButton>
-                ))}
-              <SearchBar data={data} />
-            </CS.RightControls>
-          </CS.Controls>
-        )}
+        <WorkPlaceControls data={data} role={role}/>
+
         {isOpenModal && (
           <Modal toggleModal={toggleModal}>
             <AddContacts toggleModal={toggleModal} data={data} />
