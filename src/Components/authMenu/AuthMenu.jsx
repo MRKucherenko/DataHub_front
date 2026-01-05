@@ -1,15 +1,15 @@
-import { useTranslation } from "react-i18next"
-import { ChangeLanguage } from "../ChangeLanguage/ChangeLanguage"
-import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher"
+import { useTranslation } from "react-i18next";
+import { ChangeLanguage } from "../ChangeLanguage/ChangeLanguage";
+import { ThemeSwitcher } from "../ThemeSwitcher/ThemeSwitcher";
 import loginNavigation from "../../helpers/loginNavigation.json";
-import * as CS from '../Navigation/navigation.styled'
+import * as CS from "../Navigation/navigation.styled";
 import { Logout } from "../Logout/Logout";
 
-export const AuthMenu = ({isMobile, isLogin}) => {
-  const {t} = useTranslation();
+export const AuthMenu = ({ isMobile, isLogin }) => {
+  const { t } = useTranslation();
   return (
     <>
-          {!isMobile && (
+      {!isMobile && (
         <CS.RightSection>
           {isLogin ? (
             <Logout />
@@ -23,6 +23,7 @@ export const AuthMenu = ({isMobile, isLogin}) => {
           <ChangeLanguage />
           <ThemeSwitcher />
         </CS.RightSection>
-      )}</>
-  )
-}
+      )}
+    </>
+  );
+};

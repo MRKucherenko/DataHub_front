@@ -1,18 +1,10 @@
-import { useState } from "react";
-import * as CS from "./notes.styled";
-import { useUpdateNoteMutation } from "../../redux/dataBase/dataBase";
 import { useTranslation } from "react-i18next";
+import * as CS from "./notes.styled";
+import { useNotes } from "./hooks/useNotes";
 
 export const Notes = ({ notes, id }) => {
-  const [note, setNote] = useState(notes ?? "");
-  const [updateNote] = useUpdateNoteMutation();
-  const {t} = useTranslation();
-
-  const handelChange = (event) => {
-    const { value } = event.target;
-    updateNote({ note: value, id });
-    setNote(value);
-  };
+  const { t } = useTranslation();
+  const { note, handelChange } = useNotes({ id, notes });
 
   return (
     <>

@@ -3,9 +3,5 @@ import { useAuth } from "../../hooks/useAuth";
 
 export const RestrictedRoute = ({ reDirectTo, component }) => {
   const { isLogin } = useAuth();
-  return (
-    <>
-      {isLogin ? <Navigate to={reDirectTo} replace />: component}
-    </>
-  );
+  return <>{isLogin ? <Navigate to={reDirectTo} replace /> : component}</>;
 };

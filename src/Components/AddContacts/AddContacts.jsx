@@ -1,90 +1,13 @@
-import { useReducer } from "react";
 import * as CS from "../AddContacts/addContact.styled";
-import {
-  useAddContactMutation,
-} from "../../redux/dataBase/dataBase";
 import { useTranslation } from "react-i18next";
-import {toast} from 'react-toastify';
+import { useAddContacts } from "./hooks/useAddContacts";
 
-
-const initialState = {
-  firstName: "",
-  lastName: "",
-  middleName: "",
-  date: "",
-  gender: "",
-  streetName: "",
-  streetNumber: "",
-  phone: "",
-  email: "",
-  note: "",
-};
-
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case "change":
-      return {
-        ...state,
-        [action.field]: action.value,
-      };
-
-    case "reset":
-      return initialState;
-
-    default:
-      return state;
-  }
-};
-
-export const AddContacts = ({ toggleModal , data}) => {
-  const [state, dispatch] = useReducer(formReducer, initialState);
-  const [addContacts] = useAddContactMutation();
+export const AddContacts = ({ toggleModal, data }) => {
   const { t } = useTranslation();
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    dispatch({
-      type: "change",
-      field: name,
-      value,
-    });
-  };
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const result = data?.data?.find((element) => element.email === state.email);
-
-    if (result) {
-      toast.warn('Change Email')
-      return;
-    }
-    const value = {
-      firstName: state.firstName,
-      lastName: state.lastName,
-      middleName: state.middleName,
-      gender: state.gender,
-      dateOfBirth: state.date,
-      streetName: state.streetName,
-      streetNumber: state.streetNumber,
-      phone: state.phone,
-      email: state.email,
-      note: state.note,
-    };
-    await addContacts(value);
-    toast.success('You have add the contact');
-    toggleModal();
-  };
-
-  const isDesablet =
-    state.firstName === "" ||
-    state.lastName === "" ||
-    state.middleName === "" ||
-    state.gender === "" ||
-    state.date === "" ||
-    state.streetName === "" ||
-    state.streetNumber === "" ||
-    state.phone === "" ||
-    state.email === "";
+  const { state, handleChange, handleSubmit, isDisable} = useAddContacts({
+    data,
+    toggleModal,
+  });
 
   return (
     <>
@@ -189,7 +112,7 @@ export const AddContacts = ({ toggleModal , data}) => {
             onChange={handleChange}
           />
         </CS.Label>
-        <CS.Button type="submit" disabled={isDesablet}>
+        <CS.Button type="submit" disabled={isDisable}>
           {t("addButton")}
         </CS.Button>
       </CS.Form>

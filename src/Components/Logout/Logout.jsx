@@ -4,7 +4,7 @@ import { useHandelLogout } from "./hooks/useHandleLogout";
 
 export const Logout = () => {
   const { t } = useTranslation();
-  const {handleLogout} = useHandelLogout();
+  const { handleLogout } = useHandelLogout();
 
   return (
     <>

@@ -1,4 +1,7 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { toast } from "react-toastify";
+import { useEffect } from "react";
 import {
   selectByAge,
   selectByAlphabet,
@@ -6,35 +9,17 @@ import {
   selectCreateAt,
   selectNotes,
 } from "../../redux/filters/filterSelector";
-import {
-  filterByAlphabet,
-  filterByAge,
-  filterByGender,
-  filterCreateAt,
-  filterNotes,
-  clearFilters,
-} from "../../redux/filters/filterReducer";
 import * as CS from "./filter.styled";
-import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
-import { useEffect } from "react";
+import { useFilter } from "./hooks/useFilter";
 
 export const Filter = ({ data }) => {
-  const dispatch = useDispatch();
   const byGender = useSelector(selectByGender);
   const byAlphabet = useSelector(selectByAlphabet);
   const createdAt = useSelector(selectCreateAt);
   const byAge = useSelector(selectByAge);
   const notes = useSelector(selectNotes);
   const { t } = useTranslation();
-
-  // useEffect(() => {
-  //     if(notes) {
-  //       if (data?.total) {
-  //         toast.success(t("toast `${data?.totalContacts}`"));
-  //     }
-  //   }
-  // }, [data]);
+  const {handleFilterChange, clearFilterButton, toggleNotes} = useFilter()
 
   useEffect(() => {
     if(byGender !== '') {
@@ -44,46 +29,13 @@ export const Filter = ({ data }) => {
     }
   }, [data])
 
-  const toggleNotes = () => {
-    dispatch(filterNotes(!notes));
-  };
-
-  const heandleFilterChange = (event) => {
-    const { name, value } = event.target;
-
-    switch (name) {
-      case "By Alphabet":
-        dispatch(filterByAlphabet(value));
-        return;
-
-      case "By Age":
-        dispatch(filterByAge(value));
-        return;
-
-      case "Create At":
-        dispatch(filterCreateAt(value));
-        return;
-
-      case "By Gender":
-        dispatch(filterByGender(value));
-        return;
-
-      default:
-        return;
-    }
-  };
-
-  const clearFilterButton = () => {
-    dispatch(clearFilters());
-  };
-
   return (
     <CS.FilterForm>
       <CS.FilterSelectWrapper>
         <CS.FilterSelect
           name="By Alphabet"
           value={byAlphabet}
-          onChange={heandleFilterChange}
+          onChange={handleFilterChange}
         >
           <option value="">{t("filter.byAlphabet.text")}</option>
           <option value="A-Z">{t("filter.byAlphabet.a-z")}</option>
@@ -94,7 +46,7 @@ export const Filter = ({ data }) => {
         <CS.FilterSelect
           name="By Age"
           value={byAge}
-          onChange={heandleFilterChange}
+          onChange={handleFilterChange}
         >
           <option value="">{t("filter.byAge.text")}</option>
           <option value="young-old">{t("filter.byAge.young-old")}</option>
@@ -105,7 +57,7 @@ export const Filter = ({ data }) => {
         <CS.FilterSelect
           name="Create At"
           value={createdAt}
-          onChange={heandleFilterChange}
+          onChange={handleFilterChange}
         >
           <option value="">{t("filter.createdAt.text")}</option>
           <option value="new-old">{t("filter.createdAt.new-old")}</option>
@@ -116,7 +68,7 @@ export const Filter = ({ data }) => {
         <CS.FilterSelect
           name="By Gender"
           value={byGender}
-          onChange={heandleFilterChange}
+          onChange={handleFilterChange}
         >
           <option value="">{t("filter.byGender.text")}</option>
           <option value="Male">{t("filter.byGender.Male")}</option>

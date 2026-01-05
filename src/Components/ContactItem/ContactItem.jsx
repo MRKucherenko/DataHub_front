@@ -1,8 +1,8 @@
+import { useTranslation } from "react-i18next";
 import { Modal } from "../Modal/Modal";
 import { useAuth } from "../../hooks/useAuth";
 import * as CS from "./contactItem.styled";
 import { ContactById } from "../ContactById/ContactById";
-import { useTranslation } from "react-i18next";
 import { useToggleModal } from "../../hooks/useToggleModal";
 
 export const ContactItem = ({

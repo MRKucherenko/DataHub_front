@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { logout } from "../../../redux/auth/authOperation";
 import { toast } from "react-toastify";
+import { logout } from "../../../redux/auth/authOperation";
 
 export const useHandelLogout = () => {
   const dispatch = useDispatch();

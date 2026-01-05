@@ -1,48 +1,10 @@
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 import * as CS from "./statistics.styled";
-import { useTranslation } from "react-i18next";
+import { useStatistics } from "./hooks/useStatistics";
 
 export const Statisticts = ({ data }) => {
-  const {t} = useTranslation();
   const COLORS = ["#FF8042", "#0088FE", "#07ff6a", "#ff0000", "#d103ff"];
-
-  let preparedData;
-
-  if (Array.isArray(data)) {
-    preparedData = data.map((item) => ({
-      name: item.street || item.name,
-      value: item.count || item.value,
-    }));
-  } else {
-    const {
-      totalNumberOfPeopel,
-      totalNumberOfMen,
-      totalNumberOfWomen,
-      value0_17,
-      value18_30,
-      value31_45,
-      value46_60,
-      value60,
-    } = data;
-
-    preparedData = [
-      totalNumberOfPeopel !== undefined && {
-        name: t("statistics.byGender.allPeople"),
-        value: totalNumberOfPeopel,
-      },
-      totalNumberOfMen !== undefined && { name: t("statistics.byGender.male"), value: totalNumberOfMen },
-      totalNumberOfWomen !== undefined && {
-        name: t("statistics.byGender.female"),
-        value: totalNumberOfWomen,
-      },
-
-      value0_17 !== undefined && { name: "0-17", value: value0_17 },
-      value18_30 !== undefined && { name: "18-30", value: value18_30 },
-      value31_45 !== undefined && { name: "31-45", value: value31_45 },
-      value46_60 !== undefined && { name: "46-60", value: value46_60 },
-      value60 !== undefined && { name: "60+", value: value60 },
-    ].filter(Boolean);
-  }
+  const {preparedData} = useStatistics({data});
 
   return (
     <CS.StatsCard>

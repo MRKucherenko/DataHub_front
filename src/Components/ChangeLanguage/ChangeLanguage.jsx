@@ -3,7 +3,7 @@ import * as CS from "./changeLanguage.styled";
 import { useLanguageChange } from "./hooks/useLanguageChange";
 
 export const ChangeLanguage = () => {
-  const {open, handleLanguageChange, setOpen} = useLanguageChange();
+  const { open, handleLanguageChange, setOpen } = useLanguageChange();
 
   return (
     <CS.Wrapper>

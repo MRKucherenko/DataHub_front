@@ -1,40 +1,24 @@
-import { useState } from "react";
-import { useAuth } from "../../hooks/useAuth";
-import {
-  useChangeUserMutation,
-  useDeleteUserMutation,
-} from "../../redux/workWithUsers/workWithUsers";
-import * as CS from "./updateUserStatus.styled";
 import { useTranslation } from "react-i18next";
+import { useAuth } from "../../hooks/useAuth";
+import * as CS from "./updateUserStatus.styled";
+import { useUpdateUserStatus } from "./useUpdateUserStatus/useUpdateUserStatus";
 
 export const UpdateUserStatus = ({ id, name, email, role }) => {
-  const [status, setStatus] = useState(role);
   const { role: userRole } = useAuth();
-  const [updateUserRole] = useChangeUserMutation();
-  const [deleteUser] = useDeleteUserMutation();
-  const {t} = useTranslation();
-
-  const handelChange = (event) => {
-    const { value } = event.target;
-
-    setStatus(value);
-    updateUserRole({
-      name,
-      email,
-      id,
-      role: status,
-    });
-  };
-
-  const handleDelete = () => {
-    deleteUser(id);
-  };
+  const { t } = useTranslation();
+  const { handelChange, handleDelete, status } = useUpdateUserStatus({
+    id,
+    name,
+    email,
+    role,
+  });
 
   return (
     <CS.UserCard>
       <CS.Info>
         <CS.Name>{name}</CS.Name>
         <CS.Email>{email}</CS.Email>
+        <CS.Role>{role}</CS.Role>
       </CS.Info>
 
       {userRole === "superAdmin" && (

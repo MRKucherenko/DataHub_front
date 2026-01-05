@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import * as CS from "./modal.styled";
 import { IoCloseSharp } from "react-icons/io5";
+import * as CS from "./modal.styled";
+import { useModal } from "./hooks/useModal";
 
 export const Modal = ({ children, toggleModal }) => {
+  const { closeByClick } = useModal({ toggleModal });
   useEffect(() => {
     const closeByEsc = (event) => {
       if (event.code === "Escape") {
@@ -15,12 +17,6 @@ export const Modal = ({ children, toggleModal }) => {
     };
   }, []);
 
-  const closeByClick = (event) => {
-    if (event.target === event.currentTarget) {
-      toggleModal();
-    }
-
-  };
   return (
     <CS.Overlay onClick={closeByClick}>
       <CS.ModalBox>

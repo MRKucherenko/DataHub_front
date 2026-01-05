@@ -40,6 +40,13 @@ export const Email = styled.p`
   word-break: break-word;
 `;
 
+export const Role = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.s}px;
+  color: ${({ theme }) => theme.colors.muted};
+  margin: 0;
+  word-break: break-word;
+`;
+
 export const Actions = styled.div`
   display: flex;
   align-items: center;

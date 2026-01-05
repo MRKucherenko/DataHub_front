@@ -10,6 +10,8 @@ export const useLanguageChange = () => {
     setOpen(!open);
   };
   return {
-    open, handleLanguageChange, setOpen
-  } 
+    open,
+    handleLanguageChange,
+    setOpen,
+  };
 };

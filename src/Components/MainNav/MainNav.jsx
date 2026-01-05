@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { MobileNavigation } from "../MobileNavigation/MobileNavigation";
 import navigation from "../../helpers/navigation.json";
-import * as CS from '../Navigation/navigation.styled'
+import * as CS from "../Navigation/navigation.styled";
 
 export const MainNav = ({
   toggleMobileMenu,

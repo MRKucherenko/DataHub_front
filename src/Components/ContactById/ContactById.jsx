@@ -18,12 +18,12 @@ export const ContactById = ({
   phone,
   email,
   id,
-  notes
+  notes,
 }) => {
   const { t } = useTranslation();
   const [deleteContact] = useDeleteContactMutation();
   const { role } = useAuth();
-  const {toggleModal, isOpenModal} = useToggleModal();
+  const { toggleModal, isOpenModal } = useToggleModal();
 
   return (
     <CS.ContactContainer>
@@ -65,7 +65,7 @@ export const ContactById = ({
           <CS.Value>{email}</CS.Value>
         </CS.InfoItem>
       </CS.InfoGrid>
-       <Notes notes={notes} id={id}/>
+      <Notes notes={notes} id={id} />
       {(role === "admin" || role === "superAdmin") && (
         <CS.Actions>
           <CS.Button type="button" onClick={toggleModal}>

@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { ChangeLanguage } from "../ChangeLanguage/ChangeLanguage";
 import loginNavigation from "../../helpers/loginNavigation.json";
-import * as CS from '../Navigation/navigation.styled'
+import * as CS from "../Navigation/navigation.styled";
 import { Logout } from "../Logout/Logout";
 
 export const MobileNavigation = ({ toggleMobileMenu, isMobile, isLogin }) => {
